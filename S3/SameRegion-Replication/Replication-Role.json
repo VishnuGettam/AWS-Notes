@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetReplicationConfiguration",
+                "s3:GetObjectVersionForReplication",
+                "s3:GetObjectVersionAcl",
+                "s3:GetObjectVersionTagging",
+                "s3:GetObjectRetention",
+                "s3:GetObjectLegalHold"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::srr-replication-source-bkt",
+                "arn:aws:s3:::srr-replication-source-bkt/*",
+                
+                "arn:aws:s3:::srr-replication-destination-bkt",
+                "arn:aws:s3:::srr-replication-destination-bkt/*"
+            ]
+        },
+        {
+            "Action": [
+                "s3:ReplicateObject",
+                "s3:ReplicateDelete",
+                "s3:ReplicateTags",
+                "s3:ObjectOwnerOverrideToBucketOwner"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::srr-replication-source-bkt/*",
+                "arn:aws:s3:::srr-replication-destination-bkt/*"
+            ]
+        }
+    ]
+}
