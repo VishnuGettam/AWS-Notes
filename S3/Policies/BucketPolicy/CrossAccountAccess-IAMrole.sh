@@ -1,0 +1,1 @@
+#Create a IAM Role(Acccount B) in Account A and assing s3 access to IAM Role. 
